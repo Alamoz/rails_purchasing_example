@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Sales</th>
+      <th>Sales ID</th>
       <th>Product</th>
       <th>Quantity</th>
       <th colspan="3"></th>
@@ -20,7 +20,6 @@
         <td><%= purchase.quantity %></td>
         <td><%= link_to 'Show', purchase %></td>
         <td><%= link_to 'Edit', edit_purchase_path(purchase) %></td>
-        <td><%= link_to 'Destroy', purchase, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -5,28 +5,18 @@
 <table>
   <thead>
     <tr>
-      <th>Tax exempt amount</th>
-      <th>Taxable amount</th>
-      <th>Import duty amount</th>
-      <th>Taxable total</th>
-      <th>Import duty total</th>
-      <th>Grand total</th>
-      <th colspan="3"></th>
+      <th>Total Amount</th>
+      <th>Time of Sale</th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.tax_exempt_amount %></td>
-        <td><%= sale.taxable_amount %></td>
-        <td><%= sale.import_duty_amount %></td>
-        <td><%= sale.taxable_total %></td>
-        <td><%= sale.import_duty_total %></td>
         <td><%= sale.grand_total %></td>
+        <td><%= sale.created_at %></td>
         <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Sale', new_sale_path %>
+<%= link_to 'New Purchase', new_purchase_path %>

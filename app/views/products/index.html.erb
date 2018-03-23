@@ -17,12 +17,11 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.item %></td>
-        <td><%= product.price %></td>
+        <td align="right"><%= sprintf "%.02f", product.price.round(2) %></td>
         <td><%= product.tax_exempt %></td>
         <td><%= product.import_duty %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

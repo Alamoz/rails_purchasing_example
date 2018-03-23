@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tax_exempt_amount: 1.5
+  taxable_amount: 1.5
+  import_duty_amount: 1.5
+  taxable_total: 1.5
+  import_duty_total: 1.5
+  grand_total: 1.5
+
+two:
+  tax_exempt_amount: 1.5
+  taxable_amount: 1.5
+  import_duty_amount: 1.5
+  taxable_total: 1.5
+  import_duty_total: 1.5
+  grand_total: 1.5

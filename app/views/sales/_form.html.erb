@@ -1,0 +1,47 @@
+<%= form_with(model: sale, local: true) do |form| %>
+  <% if sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+      <ul>
+      <% sale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :tax_exempt_amount %>
+    <%= form.text_field :tax_exempt_amount, id: :sale_tax_exempt_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :taxable_amount %>
+    <%= form.text_field :taxable_amount, id: :sale_taxable_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :import_duty_amount %>
+    <%= form.text_field :import_duty_amount, id: :sale_import_duty_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :taxable_total %>
+    <%= form.text_field :taxable_total, id: :sale_taxable_total %>
+  </div>
+
+  <div class="field">
+    <%= form.label :import_duty_total %>
+    <%= form.text_field :import_duty_total, id: :sale_import_duty_total %>
+  </div>
+
+  <div class="field">
+    <%= form.label :grand_total %>
+    <%= form.text_field :grand_total, id: :sale_grand_total %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

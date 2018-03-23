@@ -10,13 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323193826) do
+ActiveRecord::Schema.define(version: 20180323204435) do
 
   create_table "products", force: :cascade do |t|
     t.string "item"
     t.float "price"
-    t.boolean "tax_exempt"
-    t.boolean "import_duty"
+    t.boolean "tax_exempt", default: false
+    t.boolean "import_duty", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.integer "sales_id"
+    t.integer "product_id"
+    t.integer "quantity", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.float "tax_exempt_amount"
+    t.float "taxable_amount"
+    t.float "import_duty_amount"
+    t.float "taxable_total"
+    t.float "import_duty_total"
+    t.float "grand_total"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

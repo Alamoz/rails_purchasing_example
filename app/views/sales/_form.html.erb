@@ -11,54 +11,6 @@
     </div>
   <% end %>
 
-  <table>
-    <tr>
-      <td>
-        <div class="field">
-          <%= form.label :tax_exempt_amount %>
-          <%= "#{sprintf('%.2f', @sale.tax_exempt_amount)}" if !@sale.tax_exempt_amount.nil? %>
-        </div>
-      </td>
-
-      <td>
-        <div class="field">
-          <%= form.label :taxable_amount %>
-          <%= "#{sprintf('%.2f', @sale.taxable_amount)}" if !@sale.taxable_amount.nil? %>
-        </div>
-      </td>
-
-      <td>
-        <div class="field">
-          <%= form.label :import_duty_amount %>
-          <%= "#{sprintf('%.2f', @sale.import_duty_amount)}" if !@sale.import_duty_amount.nil? %>
-        </div>
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-        <div class="field">
-          <%= form.label :taxable_total %>
-          <%= "#{sprintf('%.2f', @sale.taxable_total)}" if !@sale.taxable_total.nil? %>
-        </div>
-      </td>
-
-      <td>
-        <div class="field">
-          <%= form.label :import_duty_total %>
-          <%= "#{sprintf('%.2f', @sale.import_duty_total)}" if !@sale.import_duty_total.nil? %>
-        </div>
-      </td>
-
-      <td>
-        <div class="field">
-          <%= form.label :grand_total %>
-          <%= "#{sprintf('%.2f', @sale.grand_total)}" if !@sale.grand_total.nil? %>
-        </div>
-      </td>
-    </tr>
-  </table>
-
   <h3>Items</h3>
 
   <div id="purchases">

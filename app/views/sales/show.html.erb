@@ -1,34 +1,95 @@
+<h1>Sales Receipt</h1>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Tax exempt amount:</strong>
-  <%= @sale.tax_exempt_amount %>
-</p>
+<table>
+  <tr>
+    <th colspan="2"></th>
+    <td>
+      <strong>Tax exempt amount:</strong>
+      <%= sprintf('%.2f', @sale.tax_exempt_amount) %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Taxable amount:</strong>
+      <%= sprintf('%.2f', @sale.taxable_amount) %>
+    </td>
 
-<p>
-  <strong>Taxable amount:</strong>
-  <%= @sale.taxable_amount %>
-</p>
+    <td>
+      <strong>Sales Tax:</strong>
+      <%= sprintf('%.2f', @sale.taxable_total) %>
+    </td>
 
-<p>
-  <strong>Import duty amount:</strong>
-  <%= @sale.import_duty_amount %>
-</p>
+    <td>
+      <strong>Total Amount with Sales Tax:</strong>
+      <%= sprintf('%.2f', (@sale.taxable_amount + @sale.taxable_total)) %>
+    </td>
+  </tr>
 
-<p>
-  <strong>Taxable total:</strong>
-  <%= @sale.taxable_total %>
-</p>
+  <tr>
+    <td>
+      <strong>Import duty amount:</strong>
+      <%= sprintf('%.2f', @sale.import_duty_amount) %>
+    </td>
 
-<p>
-  <strong>Import duty total:</strong>
-  <%= @sale.import_duty_total %>
-</p>
+    <td>
+      <strong>Import Duty:</strong>
+      <%= sprintf('%.2f', @sale.import_duty_total) %>
+    </td>
 
-<p>
-  <strong>Grand total:</strong>
-  <%= @sale.grand_total %>
-</p>
+    <td>
+      <strong>Total Amount with Import Duty:</strong>
+      <%= sprintf('%.2f', (@sale.import_duty_amount + @sale.import_duty_total)) %>
+    </td>
+  </tr>
+  <tr>
+    <th colspan="2"></th>
+    <td>
+      <strong>Grand total:</strong>
+      <%= sprintf('%.2f', @sale.grand_total) %>
+    </td>
+  </tr>
+</table>
+
+<br>
+
+<table>
+  <tr>
+    <th>Product</th><th>Price</th><th>Quantity</th><th>Sub Total</th><th>Tax</th><th>Import Duty</th><th>Item Total</th><th>Running Total</th>
+  </tr>
+  <% @purchases.each do |purchase| %>
+    <tr>
+      <td>
+        <%= purchase.product.item %>
+      </td>
+      <td>
+        <%= sprintf('%.2f', purchase.product.price) %>
+      </td>
+      <td align="right">
+        <%= purchase.quantity %>
+      </td>
+      <td>
+        <%= sprintf('%.2f', (purchase.product.price * purchase.quantity)) %>
+      </td>
+      <td align="center">
+        <%= sprintf('%.2f', purchase.tax_total) %>
+      </td>
+      <td align="center">
+        <%= sprintf('%.2f', purchase.import_duty_total) %>
+      </td>
+      <td>
+        <%= sprintf('%.2f', purchase.total) %>
+      </td>
+      <% @running_total += purchase.total %>
+      <td>
+        <%= sprintf('%.2f', @running_total) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br><br>
 
 <%= link_to 'Edit', edit_sale_path(@sale) %> |
 <%= link_to 'Back', sales_path %>

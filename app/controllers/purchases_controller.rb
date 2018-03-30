@@ -15,6 +15,7 @@ class PurchasesController < ApplicationController
   # GET /purchases/new
   def new
     @purchase = Purchase.new
+    @products = Product.all
   end
 
   # GET /purchases/1/edit

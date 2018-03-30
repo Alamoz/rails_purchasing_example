@@ -11,36 +11,65 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :tax_exempt_amount %>
-    <%= form.text_field :tax_exempt_amount, id: :sale_tax_exempt_amount %>
-  </div>
+  <table>
+    <tr>
+      <td>
+        <div class="field">
+          <%= form.label :tax_exempt_amount %>
+          <%= "#{sprintf('%.2f', @sale.tax_exempt_amount)}" if !@sale.tax_exempt_amount.nil? %>
+        </div>
+      </td>
 
-  <div class="field">
-    <%= form.label :taxable_amount %>
-    <%= form.text_field :taxable_amount, id: :sale_taxable_amount %>
-  </div>
+      <td>
+        <div class="field">
+          <%= form.label :taxable_amount %>
+          <%= "#{sprintf('%.2f', @sale.taxable_amount)}" if !@sale.taxable_amount.nil? %>
+        </div>
+      </td>
 
-  <div class="field">
-    <%= form.label :import_duty_amount %>
-    <%= form.text_field :import_duty_amount, id: :sale_import_duty_amount %>
-  </div>
+      <td>
+        <div class="field">
+          <%= form.label :import_duty_amount %>
+          <%= "#{sprintf('%.2f', @sale.import_duty_amount)}" if !@sale.import_duty_amount.nil? %>
+        </div>
+      </td>
+    </tr>
 
-  <div class="field">
-    <%= form.label :taxable_total %>
-    <%= form.text_field :taxable_total, id: :sale_taxable_total %>
-  </div>
+    <tr>
+      <td>
+        <div class="field">
+          <%= form.label :taxable_total %>
+          <%= "#{sprintf('%.2f', @sale.taxable_total)}" if !@sale.taxable_total.nil? %>
+        </div>
+      </td>
 
-  <div class="field">
-    <%= form.label :import_duty_total %>
-    <%= form.text_field :import_duty_total, id: :sale_import_duty_total %>
-  </div>
+      <td>
+        <div class="field">
+          <%= form.label :import_duty_total %>
+          <%= "#{sprintf('%.2f', @sale.import_duty_total)}" if !@sale.import_duty_total.nil? %>
+        </div>
+      </td>
 
-  <div class="field">
-    <%= form.label :grand_total %>
-    <%= form.text_field :grand_total, id: :sale_grand_total %>
-  </div>
+      <td>
+        <div class="field">
+          <%= form.label :grand_total %>
+          <%= "#{sprintf('%.2f', @sale.grand_total)}" if !@sale.grand_total.nil? %>
+        </div>
+      </td>
+    </tr>
+  </table>
 
+  <h3>Items</h3>
+
+  <div id="purchases">
+    <p>
+      <%= link_to_add_association "Add an Item", form, :purchases %>
+    </p>
+    <%= form.fields_for :purchases do |purchase| %>
+      <%= render :partial => 'purchase_fields', :locals=>{:f=>purchase} %>
+    <% end %>
+  </div>
+  
   <div class="actions">
     <%= form.submit %>
   </div>

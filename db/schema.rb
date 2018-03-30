@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323204435) do
+ActiveRecord::Schema.define(version: 20180329211328) do
 
   create_table "products", force: :cascade do |t|
     t.string "item"
@@ -22,20 +22,24 @@ ActiveRecord::Schema.define(version: 20180323204435) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.integer "sales_id"
     t.integer "product_id"
     t.integer "quantity", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "sale_id"
+    t.float "sub_total", default: 0.0
+    t.float "total", default: 0.0
+    t.float "tax_total", default: 0.0
+    t.float "import_duty_total", default: 0.0
   end
 
   create_table "sales", force: :cascade do |t|
-    t.float "tax_exempt_amount"
-    t.float "taxable_amount"
-    t.float "import_duty_amount"
-    t.float "taxable_total"
-    t.float "import_duty_total"
-    t.float "grand_total"
+    t.float "tax_exempt_amount", default: 0.0
+    t.float "taxable_amount", default: 0.0
+    t.float "import_duty_amount", default: 0.0
+    t.float "taxable_total", default: 0.0
+    t.float "import_duty_total", default: 0.0
+    t.float "grand_total", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

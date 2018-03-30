@@ -14,7 +14,7 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td><%= sale.grand_total %></td>
+        <td><%= sprintf('%.2f', sale.grand_total) %></td>
         <td><%= sale.created_at %></td>
         <td><%= link_to 'Show', sale %></td>
       </tr>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Purchase', new_purchase_path %>
+<%= link_to 'New Sale', new_sale_path %>
